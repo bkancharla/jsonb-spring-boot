@@ -1,0 +1,23 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        sql_comments: true
+  datasource:
+    url: "jdbc:postgresql://postgres.test:5432/postgres"
+    username: postgres
+    password: postgres
+logging:
+  file:
+    name: myapp.log
+  level:
+    org hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+server:
+  port: 8080
