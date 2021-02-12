@@ -72,5 +72,4 @@ Service Endpoints.
     
 ```
 
-
 **Notes: please update your db details in application.yaml file**

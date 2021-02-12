@@ -58,7 +58,7 @@ public class UserService {
     }
 
     public ArrayList<Users> readSalaryContains(double salary) {
-        return  userRepository.getRecordsBySalary(salary);
+        return userRepository.getRecordsBySalary(salary);
     }
 
     public Users createNewUserWithAllDetails(PersonalDetails personalDetails) {
@@ -66,7 +66,7 @@ public class UserService {
         user.setFirstName("first" + Thread.currentThread().getId());
         user.setLastName("last" + Thread.currentThread().getId());
         user.setPersonalDetails(personalDetails);
-        return  userRepository.save(user);
+        return userRepository.save(user);
 
     }
 }

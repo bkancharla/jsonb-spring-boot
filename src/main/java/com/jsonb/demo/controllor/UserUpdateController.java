@@ -25,10 +25,12 @@ public final class UserUpdateController {
     public void createNewUser(@PathVariable String firstName) {
         userService.createNewUserWithJsonb(firstName);
     }
+
     /**
-     *User provides all the data
+     * User provides all the data
      * curl -X PUT -H "Content-Type: application/json" -d '{"salary": 100000.0, "address": {"city": "columbus", "state": "ohio", "country": "usa"},
      * "children": ["lory", "jack"], "phoneNumber": "333-333-0000"}' http://localhost:8080/createwithalldetails
+     *
      * @return
      */
     @PutMapping("/createwithalldetails")
@@ -46,7 +48,6 @@ public final class UserUpdateController {
 
     /**
      * This will add to  existing array (prepend the data)
-
      */
     @GetMapping("/updatechilds/{id}")
     public void addToArray(@PathVariable int id) {

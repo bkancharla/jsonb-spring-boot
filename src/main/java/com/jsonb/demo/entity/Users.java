@@ -1,7 +1,6 @@
 package com.jsonb.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.jsonb.demo.model.PersonalDetails;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import lombok.Data;
