@@ -1,6 +1,6 @@
 package com.jsonb.demo.service;
 
-import com.jsonb.demo.entity.User;
+import com.jsonb.demo.entity.Users;
 import com.jsonb.demo.model.Address;
 import com.jsonb.demo.model.PersonalDetails;
 import com.jsonb.demo.repository.UserRepository;
@@ -17,10 +17,11 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
     @Transactional
     public void createNewUserWithJsonb(String firstName) {
-        User user = new User();
-        user.setFirstName(firstName);
+        Users user = new Users();
+        user.setFirstName(firstName + Thread.currentThread().getId());
         user.setLastName(firstName);
         PersonalDetails personalDetails = new PersonalDetails();
         ArrayList<String> children = new ArrayList<>();
@@ -53,6 +54,19 @@ public class UserService {
     @Transactional
     public void removeFromChildArray(int id) {
         userRepository.removeFromChildArray("tom", id);
+
+    }
+
+    public ArrayList<Users> readSalaryContains(double salary) {
+        return  userRepository.getRecordsBySalary(salary);
+    }
+
+    public Users createNewUserWithAllDetails(PersonalDetails personalDetails) {
+        Users user = new Users();
+        user.setFirstName("first" + Thread.currentThread().getId());
+        user.setLastName("last" + Thread.currentThread().getId());
+        user.setPersonalDetails(personalDetails);
+        return  userRepository.save(user);
 
     }
 }

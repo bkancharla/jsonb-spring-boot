@@ -1,5 +1,6 @@
 package com.jsonb.demo.repository;
 
+import com.jsonb.demo.entity.Users;
 import com.jsonb.demo.model.PersonalDetails;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.query.NativeQuery;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 
 @Repository
 
@@ -51,6 +53,17 @@ public class CustomJsonbRepositoryImpl implements CustomJsonbRepository {
                 .setParameter("id", primaryKey)
 
                 .executeUpdate();
+    }
+
+    //SELECT * FROM users WHERE personal_details->>'salary' = '100000.0';
+    @Override
+    public ArrayList<Users> getRecordsBySalary(double salary) {
+        return (ArrayList<Users>) entityManager.createNativeQuery("SELECT * FROM users WHERE personal_details->>'salary' = :salary", Users.class)
+                .unwrap(NativeQuery.class)
+                .addSynchronizedEntityClass(Users.class)
+                .setParameter("salary", String.valueOf(salary))
+                .getResultList();
+
     }
 
 

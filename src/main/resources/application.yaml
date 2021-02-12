@@ -6,7 +6,7 @@ spring:
       hibernate:
         show_sql: true
         format_sql: false
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: com.jsonb.demo.PostgreSQL10JsonDialect
         sql_comments: true
   datasource:
     url: "jdbc:postgresql://test:5432/postgres"

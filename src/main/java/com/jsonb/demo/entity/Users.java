@@ -15,7 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@Entity(name = "users")
+@Entity()
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
@@ -25,7 +25,7 @@ import javax.persistence.SequenceGenerator;
         defaultForType = PersonalDetails.class
 
 )
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq_gen")
