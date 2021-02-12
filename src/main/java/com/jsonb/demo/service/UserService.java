@@ -5,6 +5,7 @@ import com.jsonb.demo.model.Address;
 import com.jsonb.demo.model.PersonalDetails;
 import com.jsonb.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserService {
@@ -32,5 +33,12 @@ public class UserService {
         personalDetails.setAddress(address);
         user.setPersonalDetails(personalDetails);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void update(int id) {
+        PersonalDetails personalDetails = new PersonalDetails();
+        personalDetails.setSalary(1_50_000.00);
+        userRepository.updateJsonbData(personalDetails,id);
     }
 }

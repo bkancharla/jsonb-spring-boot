@@ -1,29 +1,27 @@
 package com.jsonb.demo.repository;
 
+import com.jsonb.demo.model.PersonalDetails;
 import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 import org.hibernate.query.NativeQuery;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.HashMap;
 
 @Repository
 
-public class CustomJsonRepositoryImpl implements CustomJsonRepository {
+public class CustomJsonbRepositoryImpl implements CustomJsonbRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public void jsonb(
-            HashMap<String, String> jsonb) {
+    public void updateJsonbData(PersonalDetails personalDetails, int primaryKey){
         entityManager.createNativeQuery(
-                "UPDATE jsonbtest  SET properties =  properties || :jsonb")
+                "UPDATE users  SET personal_details = personal_details || :personalDetails where id = :id")
                 .unwrap(NativeQuery.class)
-                .setParameter("jsonb", jsonb, JsonBinaryType.INSTANCE)
+                .setParameter("personalDetails", personalDetails, JsonBinaryType.INSTANCE)
+                .setParameter("id", primaryKey)
+
                 .executeUpdate();
     }
-
-
-
 }

@@ -16,9 +16,12 @@ public final class UserController {
     }
 
     @GetMapping("/create/{firstName}")
-    public void  test(@PathVariable String firstName) {
+    public void  create(@PathVariable String firstName) {
         userService.create(firstName);
     }
-
+    @GetMapping("/updateaddress/{id}")
+    public void  updateUsers(@PathVariable int id) {
+        userService.update(id);
+    }
 }
 
