@@ -30,6 +30,14 @@ Service Endpoints.
     public void updateSpecificUserSalary(@PathVariable int id) {
         userService.updateUserSalary(id);
     }
+    /**
+     * This will add to  existing array (prepend the data)
+
+     */
+    @GetMapping("/updatechilds/{id}")
+    public void addToArray(@PathVariable int id) {
+        userService.addToArray(id);
+    }
 
 
 **Notes: please update your db details in application.yaml file**

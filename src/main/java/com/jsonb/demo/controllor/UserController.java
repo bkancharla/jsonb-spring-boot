@@ -32,7 +32,7 @@ public final class UserController {
 
     /**
      * This will add to  existing array (prepend the data)
-     
+
      */
     @GetMapping("/updatechilds/{id}")
     public void addToArray(@PathVariable int id) {
