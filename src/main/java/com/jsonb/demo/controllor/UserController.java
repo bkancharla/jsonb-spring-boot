@@ -15,13 +15,20 @@ public final class UserController {
         this.userService = userService;
     }
 
+    /**
+     * This will Create new jsonb field
+     */
     @GetMapping("/create/{firstName}")
-    public void  create(@PathVariable String firstName) {
-        userService.create(firstName);
+    public void createNewUser(@PathVariable String firstName) {
+        userService.createNewUserWithJsonb(firstName);
     }
+
+    /**
+     * This will update specific part of jsonb
+     */
     @GetMapping("/updateaddress/{id}")
-    public void  updateUsers(@PathVariable int id) {
-        userService.update(id);
+    public void updateSpecificUserSalary(@PathVariable int id) {
+        userService.updateUserSalary(id);
     }
 }
 

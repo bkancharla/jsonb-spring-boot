@@ -16,7 +16,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void create(String firstName) {
+    public void createNewUserWithJsonb(String firstName) {
 
         User user = new User();
         user.setFirstName(firstName);
@@ -36,7 +36,7 @@ public class UserService {
     }
 
     @Transactional
-    public void update(int id) {
+    public void updateUserSalary(int id) {
         PersonalDetails personalDetails = new PersonalDetails();
         personalDetails.setSalary(1_50_000.00);
         userRepository.updateJsonbData(personalDetails,id);
