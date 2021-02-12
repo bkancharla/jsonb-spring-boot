@@ -12,6 +12,14 @@ Usage of postgres sql with spring-boot to create, replace and update(specific fi
 4. Lombok
 5. Postgres Sql
 
+**Functionalities Exist:**
+1. Create new jsonb field
+2. update specific part jsonb ( values)
+3. add  and remove new json key values 
+4. append to arrays in jsonb data
+5. Searching the data by specific jsonb filed 
+
+
 Service Endpoints.
 
 ```
