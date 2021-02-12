@@ -15,7 +15,7 @@ public class CustomJsonbRepositoryImpl implements CustomJsonbRepository {
     private EntityManager entityManager;
 
     @Override
-    public void updateJsonbData(PersonalDetails personalDetails, int primaryKey){
+    public void updateJsonbData(PersonalDetails personalDetails, int primaryKey) {
         entityManager.createNativeQuery(
                 "UPDATE users  SET personal_details = personal_details || :personalDetails where id = :id")
                 .unwrap(NativeQuery.class)
@@ -24,4 +24,22 @@ public class CustomJsonbRepositoryImpl implements CustomJsonbRepository {
 
                 .executeUpdate();
     }
+
+    @Override
+    public void addToChildArray(String childName, int primaryKey) {
+        char quotes = '"';
+        String childNameWithQuotes = quotes + childName + quotes;
+        entityManager.createNativeQuery(
+                "    UPDATE users\n" +
+                        "SET personal_details = jsonb_set(personal_details, '{children, 999999}', :data  ,TRUE)\n" +
+                        "WHERE id =  :id")
+                .unwrap(NativeQuery.class)
+                .setParameter("data", childNameWithQuotes, JsonBinaryType.INSTANCE)
+                .setParameter("id", primaryKey)
+
+                .executeUpdate();
+    }
+
+
 }
+

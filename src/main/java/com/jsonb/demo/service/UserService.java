@@ -7,6 +7,8 @@ import com.jsonb.demo.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -22,7 +24,9 @@ public class UserService {
         user.setFirstName(firstName);
         user.setLastName(firstName);
         PersonalDetails personalDetails = new PersonalDetails();
-        String[] children = {"lory", "jack"};
+        ArrayList<String> children = new ArrayList<>();
+        children.add("lory");
+        children.add("jack");
         personalDetails.setChildren(children);
         personalDetails.setPhoneNumber("333-333-0000");
         personalDetails.setSalary(1_00_000.00);
@@ -39,6 +43,12 @@ public class UserService {
     public void updateUserSalary(int id) {
         PersonalDetails personalDetails = new PersonalDetails();
         personalDetails.setSalary(1_50_000.00);
-        userRepository.updateJsonbData(personalDetails,id);
+        userRepository.updateJsonbData(personalDetails, id);
+    }
+
+    @Transactional
+
+    public void addToArray(int id) {
+        userRepository.addToChildArray("tom", id);
     }
 }

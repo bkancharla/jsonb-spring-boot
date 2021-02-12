@@ -1,7 +1,6 @@
 package com.jsonb.demo.controllor;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jsonb.demo.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +28,15 @@ public final class UserController {
     @GetMapping("/updateaddress/{id}")
     public void updateSpecificUserSalary(@PathVariable int id) {
         userService.updateUserSalary(id);
+    }
+
+    /**
+     * This will add to  existing array (prepend the data)
+     
+     */
+    @GetMapping("/updatechilds/{id}")
+    public void addToArray(@PathVariable int id) {
+        userService.addToArray(id);
     }
 }
 
