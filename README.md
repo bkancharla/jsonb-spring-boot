@@ -2,13 +2,13 @@
 
 **Jsonb data type integration with spring boot**
 
-Usage of postgres sql with spring -boot to create ,replace and update(specific fields in jsonb data)
+Usage of postgres sql with spring-boot to create, replace and update(specific fields in jsonb data)
 
 **Technologies used**
-1.JDK1.8
 
+1. JDK1.8
 2. Spring-boot
-3. hibernate-types-52<
+3. hibernate-types-52
 4. Lombok
 5. Postgres Sql
 
@@ -31,3 +31,5 @@ Service Endpoints.
         userService.updateUserSalary(id);
     }
 
+
+**Notes: please update your db details in application.yaml file**
