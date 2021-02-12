@@ -9,4 +9,6 @@ public interface CustomJsonbRepository {
             PersonalDetails personalDetails, int primaryKey);
 
     void addToChildArray(String data, int primaryKey);
+    void removeFromChildArray(String childName, int id);
+
 }

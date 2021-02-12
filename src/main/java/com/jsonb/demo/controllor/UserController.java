@@ -38,5 +38,13 @@ public final class UserController {
     public void addToArray(@PathVariable int id) {
         userService.addToArray(id);
     }
+
+    /**
+     * This will Remove specific element from existing array
+     */
+    @GetMapping("/removearray/{id}")
+    public void removeFromArray(@PathVariable int id) {
+        userService.removeFromChildArray(id);
+    }
 }
 

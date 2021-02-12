@@ -40,6 +40,19 @@ public class CustomJsonbRepositoryImpl implements CustomJsonbRepository {
                 .executeUpdate();
     }
 
+    @Override
+    public void removeFromChildArray(String childName, int primaryKey) {
+
+        entityManager.createNativeQuery("UPDATE users\n" +
+                "SET personal_details = jsonb_set(personal_details, '{children}' ,(personal_details->'children') - :data)\n" +
+                "WHERE id =  :id")
+                .unwrap(NativeQuery.class)
+                .setParameter("data", childName)
+                .setParameter("id", primaryKey)
+
+                .executeUpdate();
+    }
+
 
 }
 

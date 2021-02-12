@@ -22,7 +22,6 @@ Service Endpoints.
     public void createNewUser(@PathVariable String firstName) {
         userService.createNewUserWithJsonb(firstName);
     }
-
     /**
      * This will update specific part of jsonb
      */
@@ -37,7 +36,14 @@ Service Endpoints.
     @GetMapping("/updatechilds/{id}")
     public void addToArray(@PathVariable int id) {
         userService.addToArray(id);
+    }    /**
+     * This will Remove specific element from existing array
+     */
+    @GetMapping("/removearray/{id}")
+    public void removeFromArray(@PathVariable int id) {
+        userService.removeFromChildArray(id);
     }
+
 
 
 **Notes: please update your db details in application.yaml file**

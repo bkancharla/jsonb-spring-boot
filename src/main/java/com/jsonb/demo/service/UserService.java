@@ -17,9 +17,8 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
+    @Transactional
     public void createNewUserWithJsonb(String firstName) {
-
         User user = new User();
         user.setFirstName(firstName);
         user.setLastName(firstName);
@@ -47,8 +46,13 @@ public class UserService {
     }
 
     @Transactional
-
     public void addToArray(int id) {
         userRepository.addToChildArray("tom", id);
+    }
+
+    @Transactional
+    public void removeFromChildArray(int id) {
+        userRepository.removeFromChildArray("tom", id);
+
     }
 }
