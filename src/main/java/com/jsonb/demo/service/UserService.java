@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -68,5 +69,11 @@ public class UserService {
         user.setPersonalDetails(personalDetails);
         return userRepository.save(user);
 
+    }
+
+    public void updateAddressForSecondLevelCache(int id) {
+         Optional<Users> users =   userRepository.findById(id);
+        users.get().getPersonalDetails().setSalary(2_50_000.00);
+        userRepository.save(users.get());
     }
 }

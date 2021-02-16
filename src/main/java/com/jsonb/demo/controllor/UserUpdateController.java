@@ -47,6 +47,15 @@ public final class UserUpdateController {
     }
 
     /**
+     * This will update specific part of jsonb if second level caching being   used so update on persistent entity
+     * Invloves select query before update
+     */
+    @GetMapping("/updateaddressforsecondlevelcache/{id}")
+    public void updateAddressForSecondLevelCache(@PathVariable int id) {
+        userService.updateAddressForSecondLevelCache(id);
+    }
+
+    /**
      * This will add to  existing array (prepend the data)
      */
     @GetMapping("/updatechilds/{id}")

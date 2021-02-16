@@ -44,10 +44,19 @@ Service Endpoints.
 
     /**
      * This will update specific part of jsonb
+     this will clear out the second level cache if any being used
      */
     @GetMapping("/updateaddress/{id}")
     public void updateSpecificUserSalary(@PathVariable int id) {
         userService.updateUserSalary(id);
+    }
+        /**
+     * This will update specific part of jsonb if second level caching being   used so update on persistent entity
+     * Invloves select query before update
+     */
+    @GetMapping("/updateaddressforsecondlevelcache/{id}")
+    public void updateAddressForSecondLevelCache(@PathVariable int id) {
+        userService.updateAddressForSecondLevelCache(id);
     }
 
     /**
